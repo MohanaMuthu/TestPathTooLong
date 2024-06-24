@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="390,45" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,1016.66666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:uca="clr-namespace:UiPath.Cryptography.Activities;assembly=UiPath.Cryptography.Activities" xmlns:usba="clr-namespace:UiPath.SAP.BAPI.Activities;assembly=UiPath.SAP.BAPI.Activities" xmlns:usbc="clr-namespace:UiPath.SAP.BAPI.ConnectionService;assembly=UiPath.SAP.BAPI" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>Microsoft.VisualBasic</x:String>
@@ -23,6 +23,16 @@
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Cryptography</x:String>
+      <x:String>UiPath.Cryptography.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Cryptography.Activities</x:String>
+      <x:String>UiPath.SAP.BAPI.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -47,13 +57,65 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.SAP.BAPI.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="546,952" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <usba:SapApplicationScope AdvancedParameters="{x:Null}" AppServer="{x:Null}" Client="{x:Null}" DesignAdvancedParameters="{x:Null}" DesignAppServer="{x:Null}" DesignClient="{x:Null}" DesignLanguage="{x:Null}" DesignLogonGroup="{x:Null}" DesignMessageServer="{x:Null}" DesignPassword="{x:Null}" DesignSapRouterString="{x:Null}" DesignSncLibraryPath="{x:Null}" DesignSncMode="{x:Null}" DesignSncPartnerName="{x:Null}" DesignSncQOP="{x:Null}" DesignSncSso="{x:Null}" DesignSystemId="{x:Null}" DesignSystemNumber="{x:Null}" DesignUser="{x:Null}" ExistingConnectionService="{x:Null}" Language="{x:Null}" LogonGroup="{x:Null}" MessageServer="{x:Null}" Password="{x:Null}" SapConnectionService="{x:Null}" SapRouterString="{x:Null}" SncLibraryPath="{x:Null}" SncMode="{x:Null}" SncPartnerName="{x:Null}" SncQop="{x:Null}" SncSso="{x:Null}" StatefulConnection="{x:Null}" SystemId="{x:Null}" SystemNumber="{x:Null}" User="{x:Null}" DisplayName="SAP Application Scope" sap:VirtualizedContainerService.HintSize="484,214.666666666667" sap2010:WorkflowViewState.IdRef="SapApplicationScope_1">
+      <usba:SapApplicationScope.Body>
+        <ActivityAction x:TypeArguments="usbc:IConnectionService">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="usbc:IConnectionService" Name="ConnectionService" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,104.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </ActivityAction>
+      </usba:SapApplicationScope.Body>
+    </usba:SapApplicationScope>
+    <uca:DecryptFile InputFilePath="{x:Null}" Key="{x:Null}" KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" OutputFileName="{x:Null}" OutputFilePath="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt File" FileInputModeSwitch="FilePath" sap:VirtualizedContainerService.HintSize="484,128" sap2010:WorkflowViewState.IdRef="DecryptFile_1" KeyInputModeSwitch="Key" Overwrite="False">
+      <uca:DecryptFile.KeyEncoding>
+        <InArgument x:TypeArguments="st:Encoding">
+          <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_3" PropertyName="UTF8" />
+        </InArgument>
+      </uca:DecryptFile.KeyEncoding>
+    </uca:DecryptFile>
+    <uca:DecryptText Input="{x:Null}" Key="{x:Null}" KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Result="{x:Null}" Algorithm="AESGCM" DisplayName="Decrypt Text" sap:VirtualizedContainerService.HintSize="484,105.333333333333" sap2010:WorkflowViewState.IdRef="DecryptText_1" KeyInputModeSwitch="Key">
+      <uca:DecryptText.Encoding>
+        <InArgument x:TypeArguments="st:Encoding">
+          <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_4" PropertyName="UTF8" />
+        </InArgument>
+      </uca:DecryptText.Encoding>
+    </uca:DecryptText>
+    <uca:EncryptFile InputFilePath="{x:Null}" Key="{x:Null}" KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" OutputFileName="{x:Null}" OutputFilePath="{x:Null}" Algorithm="AESGCM" DisplayName="Encrypt File" FileInputModeSwitch="FilePath" sap:VirtualizedContainerService.HintSize="484,128" sap2010:WorkflowViewState.IdRef="EncryptFile_1" KeyInputModeSwitch="Key" Overwrite="False">
+      <uca:EncryptFile.KeyEncoding>
+        <InArgument x:TypeArguments="st:Encoding">
+          <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_1" PropertyName="UTF8" />
+        </InArgument>
+      </uca:EncryptFile.KeyEncoding>
+    </uca:EncryptFile>
+    <uca:EncryptText Input="{x:Null}" Key="{x:Null}" KeyEncodingString="{x:Null}" KeySecureString="{x:Null}" Result="{x:Null}" Algorithm="AESGCM" DisplayName="Encrypt Text" sap:VirtualizedContainerService.HintSize="484,105.333333333333" sap2010:WorkflowViewState.IdRef="EncryptText_1" KeyInputModeSwitch="Key">
+      <uca:EncryptText.Encoding>
+        <InArgument x:TypeArguments="st:Encoding">
+          <PropertyValue x:TypeArguments="st:Encoding, st:Encoding" Operand="{x:Null}" sap2010:WorkflowViewState.IdRef="PropertyValue`2_2" PropertyName="UTF8" />
+        </InArgument>
+      </uca:EncryptText.Encoding>
+    </uca:EncryptText>
   </Sequence>
 </Activity>
